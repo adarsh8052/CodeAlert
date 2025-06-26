@@ -1,0 +1,105 @@
+{% extends 'jobs/base.html' %}
+{% block title %}{{ job.title }} | CodeAlert{% endblock %}
+{% block content %}
+{% if job.seo_tags %}
+<meta name="keywords" content="{{ job.seo_tags }}">
+{% endif %}
+<div class="job-detail-simple-card">
+    <h1 class="job-detail-title">{{ job.title }}</h1>
+    <div class="job-detail-meta-row">
+        {% if job.location %}<span class="job-detail-meta"><strong>Location:</strong> {{ job.location }}</span>{% endif %}
+        {% if job.job_type %}<span class="job-detail-meta"><strong>Job Type:</strong> {{ job.job_type }}</span>{% endif %}
+        {% if job.experience %}<span class="job-detail-meta"><strong>Experience:</strong> {{ job.experience }}</span>{% endif %}
+    </div>
+    {% if job.key_responsibilities %}
+    <div class="job-detail-section">
+        <h2 class="job-detail-section-title">Key Responsibilities</h2>
+        <div class="job-detail-section-content">{{ job.key_responsibilities|safe }}</div>
+    </div>
+    {% endif %}
+    {% if job.required_qualification_and_skills %}
+    <div class="job-detail-section">
+        <h2 class="job-detail-section-title">Required Qualification & Skills</h2>
+        <div class="job-detail-section-content">{{ job.required_qualification_and_skills|safe }}</div>
+    </div>
+    {% endif %}
+    {% if job.application_link %}
+    <div class="job-detail-apply-row">
+        <a href="{{ job.application_link }}" class="job-apply-btn" target="_blank">Apply Now</a>
+    </div>
+    {% endif %}
+</div>
+<style>
+.job-detail-simple-card {
+    max-width: 700px;
+    margin: 2.5rem auto;
+    background: #fff;
+    border-radius: 1.2rem;
+    box-shadow: 0 4px 24px 0 rgba(44,62,80,0.10);
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+}
+.job-detail-title {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #ca1010;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+}
+.job-detail-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.2rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.08rem;
+    color: #444;
+}
+.job-detail-meta {
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.1rem;
+    font-weight: 600;
+}
+.job-detail-apply-row {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.job-apply-btn {
+    display: inline-block;
+    background: linear-gradient(90deg, #ffbf00 60%, #ca1010 100%);
+    color: #fff;
+    font-weight: 700;
+    padding: 0.7rem 1.5rem;
+    border-radius: 0.7rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 1px 4px 0 #b2f7c1;
+    font-size: 1.08rem;
+}
+.job-apply-btn:hover {
+    background: linear-gradient(90deg, #3c00ff 60%, #1c00ee 100%);
+    color: #fff;
+}
+.job-detail-section {
+    margin-bottom: 2rem;
+}
+.job-detail-section-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #218c3a;
+    margin-bottom: 0.5rem;
+}
+.job-detail-section-content {
+    font-size: 1.07rem;
+    color: #222;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 1.1rem 1.2rem;
+    margin-bottom: 0.2rem;
+}
+@media (max-width: 900px) {
+    .job-detail-simple-card { padding: 1.2rem 0.5rem; }
+    .job-detail-title { font-size: 1.3rem; }
+    .job-detail-meta-row { gap: 1rem; }
+}
+</style>
+{% endblock %} 

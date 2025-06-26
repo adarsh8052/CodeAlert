@@ -1,0 +1,69 @@
+{% extends 'jobs/base.html' %}
+{% block title %}About Us | CodeAlert{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | CodeAlert</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body { font-family: 'Segoe UI', 'Arial', sans-serif; background: #f8f9fa; margin: 0; }
+        .about-container {
+            max-width: 700px;
+            margin: 3rem auto 0 auto;
+            background: #fff;
+            border-radius: 1.2rem;
+            box-shadow: 0 4px 24px 0 rgba(44,62,80,0.10);
+            padding: 2.5rem 2.5rem 2rem 2.5rem;
+            text-align: center;
+        }
+        .about-logo {
+            height: 70px;
+            margin-bottom: 1.2rem;
+        }
+        .about-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #218c3a;
+            margin-bottom: 0.5rem;
+        }
+        .about-tagline {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        .about-content {
+            font-size: 1.08rem;
+            color: #333;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        .about-footer {
+            color: #888;
+            font-size: 0.98rem;
+        }
+        a { color: #218c3a; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="about-container">
+        <img src="{% static 'img/logo.png' %}" alt="CodeAlert Logo" class="about-logo">
+        <div class="about-title">About CodeAlert</div>
+        <div class="about-tagline">Your Gateway to Govt, IT Jobs & Internships</div>
+        <div class="about-content">
+            <p><strong>CodeAlert</strong> is dedicated to helping job seekers and students stay updated with the latest opportunities in IT, government jobs, and internships. Our mission is to provide timely, accurate, and easy-to-access information to empower your career journey.</p>
+            <p>We curate and present job listings, internship opportunities, and government recruitment news in a clean, user-friendly format. Whether you are a fresh graduate, an experienced professional, or someone looking for a career change, CodeAlert is your trusted partner for career growth.</p>
+        </div>
+        <div class="about-footer">
+            &copy; {{ year }} CodeAlert.com &mdash; All rights reserved.<br>
+            <a href="/">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %} 

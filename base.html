@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CodeAlert{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="brand-header">
+        <div class="brand-card">
+            <img src="{% static 'img/logo.png' %}" alt="CodeAlert Logo" class="brand-logo-large">
+            <div class="brand-title-group">
+                <div class="brand-title-large">CodeAlert</div>
+                <div class="brand-tagline">Your Gateway to Govt, IT Jobs & Internships</div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar">
+        <a href="/" class="logo-link">
+            <img src="{% static 'img/logo.png' %}" alt="CodeAlert Logo" class="logo">
+        </a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/contact/">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div class="page-content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html> 

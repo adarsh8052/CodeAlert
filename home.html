@@ -1,0 +1,349 @@
+{% extends 'jobs/base.html' %}
+{% load static %}
+{% block title %}CodeAlert | Home{% endblock %}
+{% block content %}
+<div class="latest-slider-section">
+    <div class="latest-slider-label">Latest Posts</div>
+    <div class="latest-slider-wrapper">
+        <div class="latest-slider">
+            {% for job in latest_posts %}
+                <a href="{{ job.get_absolute_url }}" class="latest-slider-item">{{ job.title }}</a>
+            {% empty %}
+                <span class="latest-slider-item">No latest posts available.</span>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="search-bar-section">
+    <form method="get" action="/search/" class="job-search-form search-bar-black" autocomplete="off">
+        <input type="text" name="q" class="job-search-input search-bar-input-black" placeholder="Search for jobs (e.g. Python, Govt, Internship)..." value="{{ request.GET.q|default:'' }}">
+        <button type="submit" class="job-search-btn search-bar-btn-black">Search</button>
+    </form>
+</div>
+<div class="container job-sections">
+    <div class="job-panel-simple">
+        <div class="panel-header-simple it-header">IT Jobs</div>
+        <ul class="job-list">
+            {% for job in it_jobs %}
+            <li class="job-list-item">
+                <a href="{{ job.get_absolute_url }}" class="job-list-link">{{ job.title }}</a>
+            </li>
+            {% empty %}
+            <li class="job-list-item job-list-empty">No IT jobs available at the moment.</li>
+            {% endfor %}
+        </ul>
+        <a href="/search/?category=IT" class="view-more-btn">View More</a>
+    </div>
+    <div class="job-panel-simple">
+        <div class="panel-header-simple govt-header">Govt Jobs</div>
+        <ul class="job-list">
+            {% for job in govt_jobs %}
+            <li class="job-list-item">
+                <a href="{{ job.get_absolute_url }}" class="job-list-link">{{ job.title }}</a>
+            </li>
+            {% empty %}
+            <li class="job-list-item job-list-empty">No Govt jobs available at the moment.</li>
+            {% endfor %}
+        </ul>
+        <a href="/search/?category=GOVT" class="view-more-btn">View More</a>
+    </div>
+    <div class="job-panel-simple">
+        <div class="panel-header-simple intern-header">Internships</div>
+        <ul class="job-list">
+            {% for job in internships %}
+            <li class="job-list-item">
+                <a href="{{ job.get_absolute_url }}" class="job-list-link">{{ job.title }}</a>
+            </li>
+            {% empty %}
+            <li class="job-list-item job-list-empty">No internships available at the moment.</li>
+            {% endfor %}
+        </ul>
+        <a href="/search/?category=INTERN" class="view-more-btn">View More</a>
+    </div>
+</div>
+<footer class="footer">
+    <div class="quick-links">
+        <a href="/about/">About Us</a> |
+        <a href="/contact/">Contact Us</a> |
+        <a href="/privacy/">Privacy Policy</a>
+    </div>
+    &copy; {{ year }} CodeAlert.com | All rights reserved
+</footer>
+<style>
+.latest-slider-section {
+    width: 96%;
+    margin: 1rem auto 1.2rem auto;
+    border: 1.5px solid #111;
+    display: flex;
+    align-items: stretch;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    min-height: 24px;
+}
+.latest-slider-label {
+    background: #111;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.3rem;
+    padding: 0 1.2rem;
+    display: flex;
+    align-items: center;
+    border-right: 3px solid #111;
+    height: 100%;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+.latest-slider-wrapper {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.latest-slider {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    animation: slide-right-to-left 30s linear infinite;
+    white-space: nowrap;
+    will-change: transform;
+}
+.latest-slider-item {
+    color: #b22222;
+    font-weight: 600;
+    font-size: 1.13rem;
+    text-decoration: none;
+    padding: 0 1.2rem;
+    border-right: 1.5px solid #b22222;
+    transition: color 0.2s;
+    background: transparent;
+}
+.latest-slider-item:last-child {
+    border-right: none;
+}
+.latest-slider-item:hover {
+    color: #111;
+    text-decoration: underline;
+}
+@keyframes slide-right-to-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+.search-bar-section {
+    width: 96%;
+    margin: 1.5rem auto 2.5rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.job-search-form.search-bar-black {
+    display: flex;
+    width: 100%;
+    border: 1.5px solid #111;
+    border-radius: 0;
+    box-shadow: none;
+    background: #fff;
+    padding: 0;
+    gap: 0;
+    overflow: hidden;
+}
+.search-bar-input-black {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1.15rem;
+    padding: 1rem 1.2rem;
+    background: #fff;
+    color: #222;
+    border-radius: 0;
+}
+.search-bar-btn-black {
+    background: #111;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 0;
+    padding: 1rem 2.2rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.search-bar-btn-black:hover {
+    background: #b22222;
+    color: #fff;
+}
+@media (max-width: 900px) {
+    .latest-slider-section, .search-bar-section { width: 99vw; min-width: 0; }
+    .latest-slider-label { font-size: 1rem; padding: 0 0.7rem; }
+    .latest-slider-item { font-size: 0.98rem; gap: 1.2rem; }
+    .search-bar-btn-black, .search-bar-input-black { padding: 0.7rem 1rem; font-size: 1rem; }
+}
+.job-sections {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.2rem;
+    align-items: stretch;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 1.5rem auto;
+}
+.job-panel-simple {
+    background: #fff;
+    border-radius: 0.3rem;
+    border: 2px solid #222;
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    padding: 0.7rem 0.5rem 1rem 0.5rem;
+}
+.panel-header-simple {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    background: #857a2f;
+    text-align: center;
+    padding: 0.7rem 0.2rem;
+    border-bottom: 2px solid #222;
+    letter-spacing: 1px;
+}
+.it-header { background: #ca1010; }
+.govt-header { background: #ca1010; }
+.intern-header { background: #ca1010; }
+.job-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.job-list-item {
+    font-size: 0.97rem;
+    font-weight: 600;
+    color: #222;
+    padding: 0.7rem 0.7rem;
+    border-bottom: 1.5px solid #222;
+    background: #fff;
+    transition: background 0.2s;
+}
+.job-list-item:last-child {
+    border-bottom: none;
+}
+.job-list-link {
+    color: #222;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+.job-list-link:hover {
+    text-decoration: underline;
+    color: #857a2f;
+}
+.job-list-empty {
+    color: #a51e1e;
+    background: #fffbe6;
+    text-align: center;
+    font-weight: 700;
+    border-bottom: none;
+}
+@media (max-width: 1200px) {
+    .job-sections {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .job-panel-simple {
+        max-width: 100%;
+        min-width: 0;
+    }
+}
+.footer {
+    width: 100%;
+    background: #fff;
+    color: #222;
+    text-align: center;
+    padding: 1.2rem 0 1.2rem 0;
+    font-size: 1.08rem;
+    box-shadow: 0 -2px 12px 0 rgba(44,62,80,0.07);
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.it-job-detail {
+    padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+    background: #f9f9f9;
+    border-radius: 0.5rem;
+    margin-bottom: 1.2rem;
+    border: 1.5px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.it-job-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.2rem;
+}
+.it-job-title {
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: #218c3a;
+    text-decoration: none;
+}
+.it-job-title:hover {
+    color: #ca1010;
+    text-decoration: underline;
+}
+.it-job-date {
+    font-size: 0.98rem;
+    color: #888;
+    font-weight: 500;
+}
+.it-job-short-desc {
+    color: #222;
+    font-size: 1.05rem;
+    margin: 0.2rem 0 0.2rem 0;
+}
+.it-job-eligibility {
+    color: #444;
+    font-size: 0.98rem;
+    margin-bottom: 0.2rem;
+}
+.it-job-tags {
+    color: #0077b5;
+    font-size: 0.97rem;
+    margin-bottom: 0.2rem;
+}
+.it-job-meta {
+    font-size: 0.95rem;
+    color: #888;
+    margin-top: 0.2rem;
+}
+.view-more-btn {
+    display: block;
+    width: 100%;
+    margin: 1rem 0 0 0;
+    padding: 0.7rem 0;
+    background: linear-gradient(90deg, #3e2d17 60%, #2f2814 100%);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 0.7rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.08rem;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 1px 4px 0 #b2f7c1;
+}
+.view-more-btn:hover {
+    background: linear-gradient(90deg, #3c00ff 60%, #1c00ee 100%);
+    color: #fff;
+}
+</style>
+{% endblock %} 

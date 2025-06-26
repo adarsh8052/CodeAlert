@@ -1,0 +1,49 @@
+{% extends 'jobs/base.html' %}
+{% block title %}Search Results | CodeAlert{% endblock %}
+{% block content %}
+<div class="search-results-container">
+    {% if query %}
+        <h2>Search Results for "{{ query }}"</h2>
+    {% elif category %}
+        <h2>
+            {% if category == 'IT' %}All IT Jobs{% elif category == 'GOVT' %}All Govt Jobs{% elif category == 'INTERN' %}All Internships{% else %}All Jobs{% endif %}
+        </h2>
+    {% else %}
+        <h2>All Jobs</h2>
+    {% endif %}
+    {% if page_obj.object_list %}
+        <ul class="search-job-list">
+            {% for job in page_obj.object_list %}
+            <li class="search-job-item">
+                <a href="{{ job.get_absolute_url }}" class="search-job-link">{{ job.title }}</a>
+                <span class="search-job-date">{{ job.date_posted|date:'d M Y' }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?q={{ query }}&category={{ category }}&page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+            <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next %}
+                <a href="?q={{ query }}&category={{ category }}&page={{ page_obj.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="no-results">No jobs found matching your search.</div>
+    {% endif %}
+</div>
+<style>
+.search-results-container { max-width: 900px; margin: 2.5rem auto; background: #fff; border-radius: 1.2rem; box-shadow: 0 4px 24px 0 rgba(44,62,80,0.10); padding: 2rem 2.5rem; }
+.search-results-container h2 { color: #ca1010; font-size: 2rem; margin-bottom: 1.5rem; }
+.search-job-list { list-style: none; margin: 0; padding: 0; }
+.search-job-item { padding: 1.1rem 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+.search-job-link { color: #218c3a; font-weight: 700; font-size: 1.13rem; text-decoration: none; transition: color 0.2s; }
+.search-job-link:hover { color: #ca1010; text-decoration: underline; }
+.search-job-date { color: #888; font-size: 0.97em; margin-left: 1.5rem; }
+.no-results { color: #a51e1e; font-weight: 700; text-align: center; margin-top: 2rem; }
+.pagination { margin-top: 2rem; text-align: center; }
+.pagination a { color: #218c3a; font-weight: 600; margin: 0 1.2rem; text-decoration: none; }
+.pagination a:hover { color: #ca1010; text-decoration: underline; }
+</style>
+{% endblock %} 

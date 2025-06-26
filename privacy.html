@@ -1,0 +1,150 @@
+{% extends 'jobs/base.html' %}
+{% load static %}
+{% block title %}Privacy Policy | CodeAlert{% endblock %}
+{% block content %}
+<div class="privacy-card">
+    <div class="privacy-header">
+        <img src="{% static 'img/logo.png' %}" alt="CodeAlert Logo" class="privacy-logo">
+        <div class="privacy-title">Privacy Policy</div>
+        <div class="privacy-date">Effective Date: {{ year }}</div>
+    </div>
+    <div class="privacy-content">
+        <section>
+            <h3><span class="privacy-icon">🔒</span> Your Privacy Matters</h3>
+            <p>At <strong>CodeAlert</strong>, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website.</p>
+        </section>
+        <section>
+            <h3><span class="privacy-icon">📝</span> Information We Collect</h3>
+            <ul>
+                <li><strong>Personal Information:</strong> When you use our contact form, we collect your name, email address, and message.</li>
+                <li><strong>Usage Data:</strong> We may collect information about how you access and use the site (e.g., IP address, browser type, pages visited).</li>
+            </ul>
+        </section>
+        <section>
+            <h3><span class="privacy-icon">💡</span> How We Use Your Information</h3>
+            <ul>
+                <li>To respond to your queries and provide support.</li>
+                <li>To improve our website and services.</li>
+                <li>To communicate important updates or information.</li>
+            </ul>
+        </section>
+        <section>
+            <h3><span class="privacy-icon">🤝</span> Information Sharing</h3>
+            <ul>
+                <li>We do not sell, trade, or rent your personal information to third parties.</li>
+                <li>We may share information if required by law or to protect our rights.</li>
+            </ul>
+        </section>
+        <section>
+            <h3><span class="privacy-icon">🔐</span> Data Security</h3>
+            <ul>
+                <li>We use reasonable measures to protect your information from unauthorized access.</li>
+            </ul>
+        </section>
+        <section>
+            <h3><span class="privacy-icon">🧑‍💻</span> Your Rights</h3>
+            <ul>
+                <li>You may request to access, update, or delete your personal information by contacting us.</li>
+            </ul>
+        </section>
+        <section>
+            <h3><span class="privacy-icon">🔄</span> Changes to This Policy</h3>
+            <ul>
+                <li>We may update this Privacy Policy from time to time. Changes will be posted on this page.</li>
+            </ul>
+        </section>
+        <section>
+            <h3><span class="privacy-icon">📬</span> Contact Us</h3>
+            <ul>
+                <li>If you have any questions about this Privacy Policy, please <a href="/contact/">contact us</a>.</li>
+            </ul>
+        </section>
+    </div>
+    <div class="privacy-footer">
+        &copy; {{ year }} CodeAlert.com &mdash; All rights reserved.<br>
+        <a href="/">Back to Home</a>
+    </div>
+</div>
+<style>
+.privacy-card {
+    background: #fff;
+    border-radius: 1.2rem;
+    box-shadow: 0 4px 24px 0 rgba(44,62,80,0.10);
+    max-width: 700px;
+    margin: 2.5rem auto 0 auto;
+    padding: 2.5rem 2.2rem 2rem 2.2rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.privacy-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.privacy-logo {
+    height: 60px;
+    margin-bottom: 0.7rem;
+}
+.privacy-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #218c3a;
+    margin-bottom: 0.2rem;
+}
+.privacy-date {
+    font-size: 1.08rem;
+    color: #555;
+    margin-bottom: 0.7rem;
+}
+.privacy-content section {
+    margin-bottom: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 0.7rem;
+    padding: 1.1rem 1.2rem 0.7rem 1.2rem;
+    box-shadow: 0 1px 4px 0 #b2f7c1;
+}
+.privacy-content h3 {
+    font-size: 1.18rem;
+    color: #218c3a;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.privacy-icon {
+    font-size: 1.3em;
+}
+.privacy-content ul {
+    margin: 0 0 0.5rem 1.2rem;
+    padding: 0;
+    color: #333;
+}
+.privacy-content li {
+    margin-bottom: 0.3rem;
+    line-height: 1.6;
+}
+.privacy-footer {
+    color: #888;
+    font-size: 0.98rem;
+    margin-top: 1.2rem;
+    text-align: center;
+}
+.privacy-content a {
+    color: #218c3a;
+    text-decoration: none;
+    font-weight: 500;
+}
+.privacy-content a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 700px) {
+    .privacy-card {
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+    }
+    .privacy-content section {
+        padding: 0.7rem 0.5rem 0.5rem 0.5rem;
+    }
+}
+</style>
+{% endblock %} 
