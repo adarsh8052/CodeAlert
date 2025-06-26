@@ -1,6 +1,6 @@
 # CodeAlert
 
-A Django-based web application for discovering government, IT jobs, and internships.
+CodeAlert is a web-based job listing and alert system built with Django. It allows users to explore categorized job openings (IT, Government, Internship) with search and filter capabilities. Admins can easily manage job posts using a custom backend. The platform supports rich job descriptions (CKEditor), file uploads, and frontend enhancements for a user-friendly experience.
 
 ## Features
 - Browse latest IT, government jobs, and internships
